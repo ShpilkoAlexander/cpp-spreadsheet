@@ -147,3 +147,4 @@ public:
 
 // Создаёт готовую к работе пустую таблицу.
 std::unique_ptr<SheetInterface> CreateSheet();
+

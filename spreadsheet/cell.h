@@ -30,7 +30,10 @@ private:
 
     std::unique_ptr<Impl> impl_;
 
-    // Добавьте поля и методы для связи с таблицей, проверки циклических 
-    // зависимостей, графа зависимостей и т. д.
-
+    Sheet& sheet_;
+    std::unordered_set<Cell*> l_nodes_;
+    std::unordered_set<Cell*> r_nodes_;
+    
+    bool IsCirculDepend(const Impl& impl) const;
+    void InvalidateCacheRecurs(bool force = false);
 };
