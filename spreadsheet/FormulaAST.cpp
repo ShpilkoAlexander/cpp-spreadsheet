@@ -197,8 +197,12 @@ public:
     }
 
     double Evaluate(const std::function<double(Position)>& args) const override {
-        if (type_ == UnaryMinus) return -1 * operand_->Evaluate(args);
-        else return operand_->Evaluate(args);
+        if (type_ == UnaryMinus) {
+            return -1 * operand_->Evaluate(args);
+        }
+        else {
+            return operand_->Evaluate(args);
+        }
     }
 
 private:

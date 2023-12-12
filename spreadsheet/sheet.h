@@ -20,6 +20,7 @@ public:
     }
 };
 
+void CheckPosition (Position pos);
 
 class Sheet : public SheetInterface {
 public:

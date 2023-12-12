@@ -36,4 +36,5 @@ private:
     
     bool IsCirculDepend(const Impl& impl) const;
     void InvalidateCacheRecurs(bool force = false);
+    void AddCellDepends();
 };

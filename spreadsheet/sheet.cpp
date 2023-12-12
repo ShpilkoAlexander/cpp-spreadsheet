@@ -10,10 +10,16 @@
 
 using namespace std::literals;
 
+void CheckPosition (Position pos) {
+    if (!pos.IsValid()) {
+        throw InvalidPositionException("Invalid position");
+    }
+}
+
 Sheet::~Sheet() {}
 
 void Sheet::SetCell(Position pos, std::string text) {
-    if (!pos.IsValid()) throw InvalidPositionException("Invalid position");
+    CheckPosition(pos);
     
     const auto& cell = cells_.find(pos);
 
@@ -30,7 +36,7 @@ CellInterface* Sheet::GetCell(Position pos) {
 }
 
 void Sheet::ClearCell(Position pos) {
-    if (!pos.IsValid()) throw InvalidPositionException("Invalid position");
+    CheckPosition(pos);
 
     const auto& cell = cells_.find(pos);
     if (cell != cells_.end() && cell->second != nullptr) {
@@ -84,7 +90,7 @@ void Sheet::PrintTexts(std::ostream& output) const {
 }
 
 const Cell* Sheet::GetConcreteCell(Position pos) const {
-    if (!pos.IsValid()) throw InvalidPositionException("Invalid position");
+    CheckPosition(pos);
 
     const auto cell = cells_.find(pos);
     if (cell == cells_.end()) {
